@@ -9,11 +9,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>{% block title %} Hello, world! {% endblock %}</title>
+
+    <style>
+        .strick{text-decoration: line-through;text-decoration-color: black}
+    </style>
+
   </head>
   <body>
 
-    {% block content %}
-    {% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">To-Do List</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+            </ul>
+            <form method="POST" class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
+              <input class="form-control mr-sm-2" name="item" type="search" placeholder="To-Do List Item" aria-label="Search">
+              <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add To List</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+
+    <br/>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

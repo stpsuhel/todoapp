@@ -5,5 +5,26 @@
 {% block content %}
 
     <h1>Home Page</h1>
+    <br/>
+    {% if all_item %}
+        <table class="table-bordered table table-striped table-dark">
+            {% for list in all_item %}
+                {% if list.completed %}
+                    <tr class="bg-danger">
+                        <td class="pl-4 strick">{{ list.item }}</td>
+                        <td align="center">{{ list.completed }}</td>
+                        <td align="center">Delete</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="pl-4">{{ list.item }}</td>
+                        <td align="center">{{ list.completed }}</td>
+                        <td align="center">Delete</td>
+                    </tr>
+                {% endif %}
+
+            {% endfor %}
+        </table>
+    {% endif %}
 
 {% endblock %}
